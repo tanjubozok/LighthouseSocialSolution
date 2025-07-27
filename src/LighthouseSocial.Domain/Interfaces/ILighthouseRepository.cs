@@ -8,6 +8,6 @@ public interface ILighthouseRepository
     Task<IEnumerable<Lighthouse>> GetAllAsync();
 
     Task AddAsync(Lighthouse lighthouse);
-    Task Update(Lighthouse lighthouse);
-    Task Delete(Guid id);
+    Task UpdateAsync(Lighthouse lighthouse);
+    Task DeleteAsync(Guid id);
 }
