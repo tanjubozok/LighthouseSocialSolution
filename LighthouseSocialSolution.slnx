@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/LighthouseSocial.Application/LighthouseSocial.Application.csproj" />
+    <Project Path="src/LighthouseSocial.Domain/LighthouseSocial.Domain.csproj" />
+  </Folder>
+  <Folder Name="/test/" />
+</Solution>
