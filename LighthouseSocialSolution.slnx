@@ -3,5 +3,7 @@
     <Project Path="src/LighthouseSocial.Application/LighthouseSocial.Application.csproj" />
     <Project Path="src/LighthouseSocial.Domain/LighthouseSocial.Domain.csproj" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/test/">
+    <Project Path="test/LighthouseSocial.Tests/LighthouseSocial.Tests.csproj" Id="5665da89-a04f-45c0-99ae-f3b356211ae9" />
+  </Folder>
 </Solution>
