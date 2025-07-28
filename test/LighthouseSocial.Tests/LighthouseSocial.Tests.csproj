@@ -20,10 +20,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Features\Comment\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\src\LighthouseSocial.Application\LighthouseSocial.Application.csproj" />
 		<ProjectReference Include="..\..\src\LighthouseSocial.Domain\LighthouseSocial.Domain.csproj" />
 	</ItemGroup>
