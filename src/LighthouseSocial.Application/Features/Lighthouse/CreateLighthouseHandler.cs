@@ -1,4 +1,5 @@
-﻿using LighthouseSocial.Application.Common;
+﻿using FluentValidation;
+using LighthouseSocial.Application.Common;
 using LighthouseSocial.Application.Dtos;
 using LighthouseSocial.Domain.Countries;
 using LighthouseSocial.Domain.Interfaces;
@@ -10,17 +11,23 @@ public class CreateLighthouseHandler
 {
     private readonly ILighthouseRepository _lighthouseRepository;
     private readonly ICountryRegister _countryRegister;
+    private readonly IValidator<LighthouseDto> _validator;
 
-    public CreateLighthouseHandler(ILighthouseRepository lighthouseRepository, ICountryRegister countryRegister)
+    public CreateLighthouseHandler(ILighthouseRepository lighthouseRepository, ICountryRegister countryRegister, IValidator<LighthouseDto> validator)
     {
         _lighthouseRepository = lighthouseRepository;
         _countryRegister = countryRegister;
+        _validator = validator;
     }
 
     public async Task<Result<Guid>> HandleAsync(LighthouseDto dto)
     {
-        if (string.IsNullOrWhiteSpace(dto.Name))
-            return Result<Guid>.Fail("Lighthouse name cannot be empty.");
+        var validationResult = await _validator.ValidateAsync(dto);
+        if (!validationResult.IsValid)
+        {
+            var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage));
+            return Result<Guid>.Fail($"Validation failed: {errors}");
+        }
 
         Country? country = _countryRegister.GetById(dto.CountryId);
         if (country == null)
